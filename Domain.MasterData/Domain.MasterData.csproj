@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84332648-8EC6-4BB4-A3B4-62F698027690}</ProjectGuid>
+    <ProjectGuid>{52C106AD-6C45-406A-8A26-6C1453799C52}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core.Common</RootNamespace>
-    <AssemblyName>Core.Common</AssemblyName>
+    <RootNamespace>Domain.MasterData</RootNamespace>
+    <AssemblyName>Domain.MasterData</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,14 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,35 +44,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\Configuration.cs" />
-    <Compile Include="Model\Entity.cs" />
-    <Compile Include="Model\IEntity.cs" />
-    <Compile Include="Model\MefBase.cs" />
-    <Compile Include="Exceptions\AuthorizationValidationException.cs" />
-    <Compile Include="Exceptions\InvalidMatchException.cs" />
-    <Compile Include="Exceptions\InvalidPointException.cs" />
-    <Compile Include="Exceptions\LockedException.cs" />
-    <Compile Include="Exceptions\NotValidException.cs" />
-    <Compile Include="Exceptions\ResourceAlreadyExistsException.cs" />
-    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
-    <Compile Include="Extensions\CoreExtensions.cs" />
-    <Compile Include="Extensions\DataExtensions.cs" />
-    <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Extensions\MefExtensions.cs" />
-    <Compile Include="Misc\ErrorMessageEventArgs.cs" />
+    <Compile Include="ProductAggregate\Photo.cs" />
+    <Compile Include="ProductAggregate\Product.cs" />
+    <Compile Include="ProductAggregate\ProductCategory.cs" />
+    <Compile Include="ProductAggregate\UnitMeasure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\SecurityGroups.cs" />
-    <Compile Include="Service\ServiceBase.cs" />
-    <Compile Include="Helpers\PropertySupport.cs" />
-    <Compile Include="Helpers\ValidateEntity.cs" />
-    <Compile Include="Validations\RegexPatterns.cs" />
-    <Compile Include="Validations\Validate.cs" />
+    <Compile Include="StoreAggregate\Store.cs" />
+    <Compile Include="StoreAggregate\StoreAddress.cs" />
+    <Compile Include="StoreAggregate\StoreContact.cs" />
+    <Compile Include="Validations\PhotoValidator.cs" />
+    <Compile Include="Validations\StoreAddressValidator.cs" />
+    <Compile Include="Validations\StoreContactValidator.cs" />
+    <Compile Include="Validations\ProductCategoryValidator.cs" />
+    <Compile Include="Validations\ProductValidator.cs" />
+    <Compile Include="Validations\StoreValidator.cs" />
+    <Compile Include="Validations\VendorAddressValidator.cs" />
+    <Compile Include="Validations\VendorContactValidator.cs" />
+    <Compile Include="Validations\VendorProductValidator.cs" />
+    <Compile Include="Validations\VendorValidator.cs" />
+    <Compile Include="VendorAggregate\Vendor.cs" />
+    <Compile Include="VendorAggregate\VendorAddress.cs" />
+    <Compile Include="VendorAggregate\VendorContact.cs" />
+    <Compile Include="VendorAggregate\VendorProduct.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Attributes\" />
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.CrossCutting\Domain.CrossCutting.csproj">
+      <Project>{44cb1c9c-6e18-4fd7-9b35-2eecd9102702}</Project>
+      <Name>Domain.CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

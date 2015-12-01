@@ -1,4 +1,4 @@
-namespace Domain.MasterData.ProductAggregate
+namespace Domain.CrossCutting.Products
 {
     public enum UnitMeasure
     {

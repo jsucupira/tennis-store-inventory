@@ -4,15 +4,13 @@
     {
         private Configuration() { }
 
-        public Configuration(string name, string configurationType, string value)
+        public Configuration(string key, string value)
         {
-            Name = name;
+            Key = key;
             Value = value;
-            ConfigurationType = configurationType;
         }
 
-        public string Name { get; private set; }
-        public string ConfigurationType { get; private set; }
+        public string Key { get; private set; }
         public string Value { get; private set; }
     }
 }

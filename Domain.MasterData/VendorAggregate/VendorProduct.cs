@@ -1,5 +1,6 @@
 using System;
 using Core.Common.Model;
+using Domain.CrossCutting.Products;
 using Domain.MasterData.ProductAggregate;
 using Domain.MasterData.Validations;
 using FluentValidation;

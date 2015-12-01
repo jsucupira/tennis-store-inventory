@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Threading.Tasks;
-using Core.Common.Caching;
 using Core.Common.Exceptions;
 
 namespace Core.Common.Configurations

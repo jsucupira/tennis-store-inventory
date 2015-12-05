@@ -20,19 +20,11 @@ namespace Domain.MasterData.StoreAggregate
         {
             Id = Guid.NewGuid();
             OpenDate = DateTime.UtcNow;
-            IsActive = true;
             CreatedDate = DateTime.UtcNow;
-            LastModifiedDate = DateTime.UtcNow;
         }
 
         public DateTime? ClosedDate { get; set; }
         public string Description { get; set; }
-        public bool IsActive { get; private set; }
-        public bool IsLocked { get; private set; }
-        public string LockedBy { get; private set; }
-        public DateTime CreatedDate { get; private set; }
-        public DateTime LastModifiedDate { get; private set; }
-        public string LastModifiedBy { get; private set; }
         public string ManagerEmail { get; set; }
         public string ManagerName { get; set; }
         public string Name { get; private set; }
@@ -65,32 +57,6 @@ namespace Domain.MasterData.StoreAggregate
         {
             StoreAddresses = storeAddresses;
             StoreContacts = storeContact;
-        }
-
-        public void Activate()
-        {
-            IsActive = true;
-        }
-
-        public void DeActivate()
-        {
-            IsActive = false;
-        }
-
-        public void LockEntity(string lockedBy)
-        {
-            IsLocked = true;
-            LockedBy = lockedBy;
-        }
-
-        public void UnlockEntity()
-        {
-            IsLocked = false;
-        }
-
-        public void ModifiedBy(string userName)
-        {
-            LastModifiedBy = userName;
         }
 
         protected override IValidator GetValidator()

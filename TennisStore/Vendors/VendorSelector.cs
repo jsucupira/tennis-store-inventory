@@ -35,7 +35,7 @@ namespace TennisStore.Vendors
 
             Vendor vendor = ContextFactory.Create<IVendorContext>().Get(vendorId);
             if (vendor == null)
-                throw new ResourceNotFoundException("Vendor", vendorId);
+                CreateErrors.NotFound(vendorId);
 
             return vendor;
         }

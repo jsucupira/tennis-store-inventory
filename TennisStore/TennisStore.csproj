@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateErrors.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Products\ProductSelector.cs" />
     <Compile Include="Products\ProductUpdator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,7 +54,12 @@
     <Compile Include="Vendors\VendorSelector.cs" />
     <Compile Include="Vendors\VendorUpdator.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
       <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>

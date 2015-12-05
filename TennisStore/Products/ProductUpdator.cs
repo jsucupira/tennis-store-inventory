@@ -18,12 +18,6 @@ namespace TennisStore.Products
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
     public static class ProductUpdator
     {
-        private static bool CheckIfUserCanUnlock(Entity<string> entity)
-        {
-            if (string.IsNullOrEmpty(entity.LockedBy)) return true;
-            return entity.LockedBy.Equals(ServiceBase.GetUserName(), StringComparison.OrdinalIgnoreCase) || ServiceBase.IsUserAdmin();
-        }
-
         /// <summary>
         ///     Creates the specified product.
         /// </summary>
@@ -37,6 +31,7 @@ namespace TennisStore.Products
 
             product.ModifiedBy(ServiceBase.GetUserName());
             product.Validate();
+            product.Activate();
             return ContextFactory.Create<IProductContext>().Create(product);
         }
 
@@ -48,51 +43,17 @@ namespace TennisStore.Products
         public static void Delete(string productId)
         {
             if (string.IsNullOrEmpty(productId))
-                throw new NotValidException(productId);
+                CreateErrors.NotValid(productId, nameof(productId));
 
             IProductContext context = ContextFactory.Create<IProductContext>();
             Product product = context.Get(productId);
 
             if (product != null)
             {
-                if (product.IsLocked)
-                {
-                    if (CheckIfUserCanUnlock(product))
-                    {
-                        product.ModifiedBy(ServiceBase.GetUserName());
-                        product.DeActivate();
-                        context.Update(product);
-                    }
-                    else
-                        CreateErrors.ItemIsLocked(productId, product.LockedBy);
-                }
-                else
-                {
-                    product.ModifiedBy(ServiceBase.GetUserName());
-                    product.DeActivate();
-                    context.Update(product);
-                }
+                product.ModifiedBy(ServiceBase.GetUserName());
+                product.DeActivate();
+                context.Update(product);
             }
-        }
-
-        /// <summary>
-        ///     Locks the item.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        public static void LockItem(Product product)
-        {
-            product.LockEntity(ServiceBase.GetUserName());
-            ContextFactory.Create<IProductContext>().Update(product);
-        }
-
-        /// <summary>
-        ///     Unlocks the item.
-        /// </summary>
-        /// <param name="product">The product.</param>
-        public static void UnlockItem(Product product)
-        {
-            product.UnlockEntity();
-            ContextFactory.Create<IProductContext>().Update(product);
         }
 
         /// <summary>

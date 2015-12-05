@@ -10,9 +10,7 @@ namespace Domain.MasterData.VendorAggregate
     {
         private Vendor()
         {
-            IsActive = true;
             CreatedDate = DateTime.UtcNow;
-            LastModifiedDate = DateTime.UtcNow;
         }
 
         public Vendor(string id, string name, string accountNumber)
@@ -23,12 +21,6 @@ namespace Domain.MasterData.VendorAggregate
         }
 
         public string AccountNumber { get; set; }
-        public DateTime CreatedDate { get; private set; }
-        public bool IsActive { get; private set; }
-        public bool IsLocked { get; private set; }
-        public string LastModifiedBy { get; private set; }
-        public DateTime LastModifiedDate { get; private set; }
-        public string LockedBy { get; private set; }
         public string Name { get; set; }
         public bool PreferredVendorStatus { get; set; }
         public string PurchasingWebServiceUrl { get; set; }
@@ -36,30 +28,9 @@ namespace Domain.MasterData.VendorAggregate
         public IReadOnlyList<VendorContact> VendorContacts { get; private set; }
         public IReadOnlyList<VendorProduct> VendorProducts { get; private set; }
 
-        public void Activate()
-        {
-            IsActive = true;
-        }
-
-        public void DeActivate()
-        {
-            IsActive = false;
-        }
-
         protected override IValidator GetValidator()
         {
             return new VendorValidator();
-        }
-
-        public void LockEntity(string lockedBy)
-        {
-            IsLocked = true;
-            LockedBy = lockedBy;
-        }
-
-        public void ModifiedBy(string userName)
-        {
-            LastModifiedBy = userName;
         }
 
         internal void SetCollections(IReadOnlyList<VendorAddress> vendorAddresses, IReadOnlyList<VendorContact> vendorContacts, IReadOnlyList<VendorProduct> vendorProducts)
@@ -67,11 +38,6 @@ namespace Domain.MasterData.VendorAggregate
             VendorAddresses = vendorAddresses;
             VendorContacts = vendorContacts;
             VendorProducts = vendorProducts;
-        }
-
-        public void UnlockEntity()
-        {
-            IsLocked = false;
         }
     }
 }

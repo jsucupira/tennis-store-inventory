@@ -100,8 +100,6 @@ namespace Core.Common.Model
         private readonly IValidator _validator;
         
         public bool IsActive { get; private set; }
-        public bool IsLocked { get; private set; }
-        public string LockedBy { get; private set; }
         public DateTime CreatedDate { get; protected set; }
         public string LastModifiedBy { get; private set; }
         public DateTime LastModifiedDate { get; private set; }
@@ -115,22 +113,11 @@ namespace Core.Common.Model
         {
             IsActive = false;
         }
-        public void LockEntity(string lockedBy)
-        {
-            IsLocked = true;
-            LockedBy = lockedBy;
-        }
 
         public void ModifiedBy(string userName)
         {
             LastModifiedBy = userName;
             LastModifiedDate = DateTime.UtcNow;
-        }
-
-        public void UnlockEntity()
-        {
-            IsLocked = false;
-            LockedBy = string.Empty;
         }
     }
 }

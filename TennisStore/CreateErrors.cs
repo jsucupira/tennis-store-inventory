@@ -9,7 +9,7 @@ namespace TennisStore
             throw new ResourceAlreadyExistsException(string.Format(Messages.OBJECT_EXISTS, itemId));
         }
 
-        public static void ItemDoesntExist(object itemId)
+        public static void NotFound(object itemId)
         {
             throw new ResourceNotFoundException(string.Format(Messages.OBJECT_DONT_EXISTS, itemId));
         }

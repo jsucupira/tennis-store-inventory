@@ -23,8 +23,13 @@ namespace TennisStore.Vendors
         /// <returns>Vendor.</returns>
         public static Vendor Create(Vendor vendor)
         {
+            IVendorContext context = ContextFactory.Create<IVendorContext>();
+            if (context.Get(vendor.Id) != null)
+                CreateErrors.ItemAlreadyExists(vendor.Id);
+
             vendor.ModifiedBy(ServiceBase.GetUserName());
             vendor.Validate();
+            vendor.Activate();
             return ContextFactory.Create<IVendorContext>().Create(vendor);
         }
 
@@ -36,7 +41,7 @@ namespace TennisStore.Vendors
         public static void Delete(string vendorId)
         {
             if (string.IsNullOrEmpty(vendorId))
-                throw new NotValidException(vendorId);
+                CreateErrors.NotValid(vendorId, nameof(vendorId));
 
             ContextFactory.Create<IVendorContext>().Delete(vendorId);
         }

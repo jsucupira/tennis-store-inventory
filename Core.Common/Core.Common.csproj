@@ -57,7 +57,7 @@
     <Compile Include="Configurations\ConfigurationSelector.cs" />
     <Compile Include="Configurations\IConfigurationContext.cs" />
     <Compile Include="Exceptions\ConfigurationException.cs" />
-    <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
     <Compile Include="Factories\ContextFactory.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\IEntity.cs" />
@@ -66,7 +66,6 @@
     <Compile Include="Exceptions\LockedException.cs" />
     <Compile Include="Exceptions\NotValidException.cs" />
     <Compile Include="Exceptions\ResourceAlreadyExistsException.cs" />
-    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
     <Compile Include="Extensions\CoreExtensions.cs" />
     <Compile Include="Extensions\DataExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />

@@ -10,7 +10,7 @@ using Domain.MasterData.StoreAggregate;
 namespace TennisStore.Stores
 {
     /// <summary>
-    /// Class StoreUpdator.
+    ///     Class StoreUpdator.
     /// </summary>
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.ADMINISTRATOR)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_ADMIN)]
@@ -18,19 +18,24 @@ namespace TennisStore.Stores
     public static class StoreUpdator
     {
         /// <summary>
-        /// Creates the specified store.
+        ///     Creates the specified store.
         /// </summary>
         /// <param name="store">The store.</param>
         /// <returns>Store.</returns>
         public static Store Create(Store store)
         {
+            IStoreContext context = ContextFactory.Create<IStoreContext>();
+            if (context.Get(store.Id) != null)
+                CreateErrors.ItemAlreadyExists(store.Id);
+
             store.ModifiedBy(ServiceBase.GetUserName());
             store.Validate();
-            return ContextFactory.Create<IStoreContext>().Create(store);
+            store.Activate();
+            return context.Create(store);
         }
 
         /// <summary>
-        /// Deletes the specified store identifier.
+        ///     Deletes the specified store identifier.
         /// </summary>
         /// <param name="storeId">The store identifier.</param>
         /// <exception cref="NotValidException"></exception>
@@ -38,13 +43,13 @@ namespace TennisStore.Stores
         {
             Guid guid;
             if (!Guid.TryParse(storeId, out guid))
-                throw new NotValidException(storeId);
+                CreateErrors.NotValid(storeId, nameof(storeId));
 
             ContextFactory.Create<IStoreContext>().Delete(guid);
         }
 
         /// <summary>
-        /// Updates the specified store.
+        ///     Updates the specified store.
         /// </summary>
         /// <param name="store">The store.</param>
         public static void Update(Store store)

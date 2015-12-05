@@ -42,7 +42,7 @@ namespace TennisStore.Products
 
             Product product = ContextFactory.Create<IProductContext>().Get(productId);
             if (product == null)
-                CreateErrors.ItemDoesntExist(productId);
+                CreateErrors.NotFound(productId);
 
             return product;
         }

@@ -2,10 +2,13 @@ namespace Domain.CrossCutting.Products
 {
     public enum UnitMeasure
     {
-        Pound,
+        Pounds,
         Kilograms,
         Size,
         Centimeters,
-        Inches
+        Inches,
+        Ounces,
+        Gauge,
+        Feet
     }
 }

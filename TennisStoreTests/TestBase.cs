@@ -4,6 +4,7 @@ using Core.Common.Extensions;
 using Core.Common.Factories;
 using Domain.MasterData.ProductAggregate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TennisStore.Products;
 using TennisStoreTests.Products;
 using TestHelpers;
 
@@ -15,7 +16,8 @@ namespace TennisStoreTests
         [TestCleanup]
         public void Cleanup()
         {
-            ProductTestData.Products.ForEach(t => ContextFactory.Create<IProductContext>().Delete(t.Id));
+            IProductContext context = ContextFactory.Create<IProductContext>();
+            ProductTestData.Products.ForEach(t => context.Delete(t.Id));
         }
 
         [TestInitialize]
@@ -26,7 +28,7 @@ namespace TennisStoreTests
             string[] roles = { @"Administrators" };
             GenericPrincipal principal = new GenericPrincipal(identity, roles);
             Thread.CurrentPrincipal = principal;
-            ProductTestData.Products.ForEach(t => ContextFactory.Create<IProductContext>().Create(t));
+            ProductTestData.Products.ForEach(t => ProductUpdator.Create(t));
         }
     }
 }

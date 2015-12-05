@@ -12,17 +12,15 @@ namespace Domain.MasterData.ProductAggregate
         private Product()
         {
             CreatedDate = DateTime.UtcNow;
+            Sizes = new List<Size>();
         }
 
-        public Product(string id, string description,string name, int categoryId, UnitMeasure sizeUnitMeasureCode, decimal standardCost,
-            UnitMeasure weightUnitMeasureCode) : this()
+        public Product(string id, string name, string description, int categoryId, decimal standardCost) : this()
         {
             Id = id;
             Description = description;
             Name = name;
-            SizeUnitMeasureCode = sizeUnitMeasureCode.ToString();
             StandardCost = standardCost;
-            WeightUnitMeasureCode = weightUnitMeasureCode.ToString();
             ProductCategoryId = categoryId;
         }
 
@@ -35,10 +33,9 @@ namespace Domain.MasterData.ProductAggregate
         public IReadOnlyList<Photo> ProductPhotos { get; set; }
         public DateTime? SellEndDate { get; set; }
         public DateTime? SellStartDate { get; set; }
-        public string Size { get; set; }
-        public string SizeUnitMeasureCode { get; set; }
+        public List<Size> Sizes { get; set; }
         public decimal StandardCost { get; set; }
-        public decimal? Weight { get; set; }
+        public double Weight { get; set; }
         public string WeightUnitMeasureCode { get; set; }
 
 

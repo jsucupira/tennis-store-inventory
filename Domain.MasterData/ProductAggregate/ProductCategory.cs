@@ -10,8 +10,9 @@ namespace Domain.MasterData.ProductAggregate
         {
         }
 
-        public ProductCategory(string name): this()
+        public ProductCategory(int id, string name): this()
         {
+            Id = id;
             Name = name;
         }
 

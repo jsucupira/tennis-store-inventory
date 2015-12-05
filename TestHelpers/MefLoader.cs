@@ -5,6 +5,12 @@ namespace TestHelpers
 {
     public static class MefLoader
     {
+
+        private static readonly object _lock = new object();
+        public static object SynchronizationLock
+        {
+            get { return _lock; }
+        }
         public static void Initialize()
         {
             AggregateCatalog catalog = new AggregateCatalog();

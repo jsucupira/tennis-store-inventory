@@ -48,6 +48,7 @@
     <Compile Include="ProductAggregate\Photo.cs" />
     <Compile Include="ProductAggregate\Product.cs" />
     <Compile Include="ProductAggregate\ProductCategory.cs" />
+    <Compile Include="ProductAggregate\Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreAggregate\IStoreContext.cs" />
     <Compile Include="StoreAggregate\Store.cs" />

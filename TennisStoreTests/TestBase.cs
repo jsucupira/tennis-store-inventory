@@ -1,4 +1,6 @@
-﻿using Core.Common.Extensions;
+﻿using System.Security.Principal;
+using System.Threading;
+using Core.Common.Extensions;
 using Core.Common.Factories;
 using Domain.MasterData.ProductAggregate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,6 +22,10 @@ namespace TennisStoreTests
         public void Init()
         {
             MefLoader.Initialize();
+            GenericIdentity identity = new GenericIdentity("jsucupira");
+            string[] roles = { @"Administrators" };
+            GenericPrincipal principal = new GenericPrincipal(identity, roles);
+            Thread.CurrentPrincipal = principal;
             ProductTestData.Products.ForEach(t => ContextFactory.Create<IProductContext>().Create(t));
         }
     }

@@ -22,7 +22,7 @@ namespace TennisStoreTests.Products
         }
 
         [TestMethod]
-        [ExpectedException(typeof (NotFoundException))]
+        [ExpectedException(typeof (ResourceNotFoundException))]
         public void GetNonExistentTest()
         {
             ProductSelector.Get("adwda");

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Permissions;
 using Core.Common.Exceptions;
 using Core.Common.Factories;
+using Core.Common.Security;
 using Domain.MasterData.StoreAggregate;
 
 namespace TennisStore.Stores
@@ -9,6 +12,11 @@ namespace TennisStore.Stores
     /// <summary>
     /// Class StoreSelector.
     /// </summary>
+    [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.ADMINISTRATOR)]
+    [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.SYS_ADMIN)]
+    [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_ADMIN)]
+    [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
+    [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_VIEW)]
     public static class StoreSelector
     {
         /// <summary>
@@ -16,8 +24,10 @@ namespace TennisStore.Stores
         /// </summary>
         /// <param name="storeId">The store identifier.</param>
         /// <returns>Store.</returns>
+        /// <exception cref="NotValidException"></exception>
+        /// <exception cref="ResourceNotFoundException">Store</exception>
         /// <exception cref="Core.Common.Exceptions.NotValidException"></exception>
-        /// <exception cref="Core.Common.Exceptions.NotFoundException">Store</exception>
+        /// <exception cref="Core.Common.Exceptions.ResourceNotFoundException">Store</exception>
         public static Store Get(string storeId)
         {
             Guid guid;
@@ -26,7 +36,7 @@ namespace TennisStore.Stores
 
             Store store = ContextFactory.Create<IStoreContext>().Get(guid);
             if (store == null)
-                throw new NotFoundException("Store", storeId);
+                throw new ResourceNotFoundException("Store", storeId);
 
             return store;
         }
@@ -37,7 +47,7 @@ namespace TennisStore.Stores
         /// <returns>List&lt;Store&gt;.</returns>
         public static List<Store> FindAll()
         {
-            return ContextFactory.Create<IStoreContext>().FindAll();
+            return ContextFactory.Create<IStoreContext>().FindAll().Where(t => t.IsActive).ToList();
         }
     }
 }

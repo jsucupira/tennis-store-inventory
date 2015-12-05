@@ -43,7 +43,6 @@ namespace TennisStoreTests.Products
             product.Description = "Updated Description";
             product.Name = "Updated Name";
             product.ProductCategoryId = 2;
-            product.ModifiedBy("jsucupira");
 
             ProductUpdator.Update(product);
             product = ProductSelector.Get("product_4");

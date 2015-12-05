@@ -22,14 +22,14 @@ namespace Domain.MasterData.VendorAggregate
             Name = name;
         }
 
-        public string AccountNumber { get; private set; }
+        public string AccountNumber { get; set; }
         public DateTime CreatedDate { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
         public string LastModifiedBy { get; private set; }
         public DateTime LastModifiedDate { get; private set; }
         public string LockedBy { get; private set; }
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public bool PreferredVendorStatus { get; set; }
         public string PurchasingWebServiceUrl { get; set; }
         public IReadOnlyList<VendorAddress> VendorAddresses { get; private set; }

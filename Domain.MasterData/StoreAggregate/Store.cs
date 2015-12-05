@@ -26,7 +26,7 @@ namespace Domain.MasterData.StoreAggregate
         }
 
         public DateTime? ClosedDate { get; set; }
-        public string Description { get; private set; }
+        public string Description { get; set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
         public string LockedBy { get; private set; }
@@ -36,7 +36,7 @@ namespace Domain.MasterData.StoreAggregate
         public string ManagerEmail { get; set; }
         public string ManagerName { get; set; }
         public string Name { get; private set; }
-        public DateTime OpenDate { get; private set; }
+        public DateTime OpenDate { get; set; }
         public IReadOnlyList<StoreAddress> StoreAddresses { get; private set; }
         public IReadOnlyList<StoreContact> StoreContacts { get; private set; }
         public string UserDefined1 { get; set; }

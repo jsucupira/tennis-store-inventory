@@ -27,9 +27,8 @@ namespace Domain.MasterData.ProductAggregate
             ProductCategoryId = categoryId;
         }
 
-        public string Class { get; set; }
         public string Color { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; private set; }
         public string Description { get; set; }
         public DateTime? DiscontinuedDate { get; set; }
         public bool IsActive { get; private set; }

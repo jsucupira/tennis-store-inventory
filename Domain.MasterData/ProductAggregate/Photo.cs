@@ -25,13 +25,13 @@ namespace Domain.MasterData.ProductAggregate
         public DateTime CreatedDate { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
-        public string LargePhotoUrl { get; private set; }
-        public string LargePhotoFileName { get; private set; }
+        public string LargePhotoUrl { get; set; }
+        public string LargePhotoFileName { get; set; }
         public string LastModifiedBy { get; private set; }
         public DateTime LastModifiedDate { get; private set; }
         public string LockedBy { get; private set; }
         public string ProductId { get; private set; }
-        public string ThumbNailPhotoUrl { get; private set; }
+        public string ThumbNailPhotoUrl { get; set; }
 
         public void Activate()
         {

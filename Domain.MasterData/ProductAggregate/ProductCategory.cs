@@ -10,13 +10,12 @@ namespace Domain.MasterData.ProductAggregate
         {
         }
 
-        public ProductCategory(string name)
-            : this()
+        public ProductCategory(string name): this()
         {
             Name = name;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         protected override IValidator GetValidator()
         {

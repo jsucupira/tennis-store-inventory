@@ -21,12 +21,12 @@ namespace Domain.MasterData.VendorAggregate
 
         public string AdditionalContactInfo { get; set; }
         public string CellPhone { get; set; }
-        public string ContactType { get; private set; }
+        public string ContactType { get; set; }
         public string EmailAddress { get; set; }
-        public string FirstName { get; private set; }
+        public string FirstName { get; set; }
         public string HomeExtension { get; set; }
         public string HomePhone { get; set; }
-        public string LastName { get; private set; }
+        public string LastName { get; set; }
         public string MiddleName { get; set; }
         public string Suffix { get; set; }
         public string Title { get; set; }

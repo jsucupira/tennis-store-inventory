@@ -25,8 +25,8 @@ namespace Domain.MasterData.VendorAggregate
 
         public decimal? LastReceiptCost { get; set; }
         public DateTime? LastReceiptDate { get; set; }
-        public decimal StandardPrice { get; private set; }
-        public string UnitMeasure { get; private set; }
+        public decimal StandardPrice { get; set; }
+        public string UnitMeasure { get; set; }
         public string VendorId { get; private set; }
         public string VendorProductKey { get; private set; }
 

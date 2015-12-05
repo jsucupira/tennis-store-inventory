@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52C106AD-6C45-406A-8A26-6C1453799C52}</ProjectGuid>
+    <ProjectGuid>{80451320-82B2-4EA5-B377-7F616144C45A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain.MasterData</RootNamespace>
-    <AssemblyName>Domain.MasterData</AssemblyName>
+    <RootNamespace>TestHelpers</RootNamespace>
+    <AssemblyName>TestHelpers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,11 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,34 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductAggregate\IProductContext.cs" />
-    <Compile Include="ProductAggregate\Photo.cs" />
-    <Compile Include="ProductAggregate\Product.cs" />
-    <Compile Include="ProductAggregate\ProductCategory.cs" />
+    <Compile Include="InMemoryStorage.cs" />
+    <Compile Include="MefLoader.cs" />
+    <Compile Include="Mocks\InMemoryProductContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StoreAggregate\IStoreContext.cs" />
-    <Compile Include="StoreAggregate\Store.cs" />
-    <Compile Include="StoreAggregate\StoreAddress.cs" />
-    <Compile Include="StoreAggregate\StoreContact.cs" />
-    <Compile Include="Validations\PhotoValidator.cs" />
-    <Compile Include="Validations\StoreAddressValidator.cs" />
-    <Compile Include="Validations\StoreContactValidator.cs" />
-    <Compile Include="Validations\ProductCategoryValidator.cs" />
-    <Compile Include="Validations\ProductValidator.cs" />
-    <Compile Include="Validations\StoreValidator.cs" />
-    <Compile Include="Validations\VendorAddressValidator.cs" />
-    <Compile Include="Validations\VendorContactValidator.cs" />
-    <Compile Include="Validations\VendorProductValidator.cs" />
-    <Compile Include="Validations\VendorValidator.cs" />
-    <Compile Include="VendorAggregate\IVendorContext.cs" />
-    <Compile Include="VendorAggregate\Vendor.cs" />
-    <Compile Include="VendorAggregate\VendorAddress.cs" />
-    <Compile Include="VendorAggregate\VendorContact.cs" />
-    <Compile Include="VendorAggregate\VendorProduct.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
@@ -81,6 +54,10 @@
     <ProjectReference Include="..\Domain.CrossCutting\Domain.CrossCutting.csproj">
       <Project>{44cb1c9c-6e18-4fd7-9b35-2eecd9102702}</Project>
       <Name>Domain.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.MasterData\Domain.MasterData.csproj">
+      <Project>{52c106ad-6c45-406a-8a26-6c1453799c52}</Project>
+      <Name>Domain.MasterData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

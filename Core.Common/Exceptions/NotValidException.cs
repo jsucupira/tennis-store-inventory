@@ -3,7 +3,7 @@ using System;
 namespace Core.Common.Exceptions
 {
     [Serializable]
-    public class NotValidException : ApplicationException
+    public class NotValidException : Exception
     {
         public NotValidException(string message): base(message)
         {

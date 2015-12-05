@@ -57,6 +57,8 @@
     <Compile Include="Configurations\ConfigurationSelector.cs" />
     <Compile Include="Configurations\IConfigurationContext.cs" />
     <Compile Include="Exceptions\ConfigurationException.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Factories\ContextFactory.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\MefBase.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Extensions\MefExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecurityGroups.cs" />
+    <Compile Include="Service\IServices.cs" />
     <Compile Include="Service\ServiceBase.cs" />
     <Compile Include="Helpers\PropertySupport.cs" />
     <Compile Include="Helpers\ValidateEntity.cs" />

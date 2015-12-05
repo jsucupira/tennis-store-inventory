@@ -6,6 +6,7 @@ using FluentValidation;
 
 namespace Domain.MasterData.StoreAggregate
 {
+    [Serializable]
     public sealed class Store : Entity<Guid>
     {
         public Store(string name, string description)
@@ -59,7 +60,6 @@ namespace Domain.MasterData.StoreAggregate
         public string UserDefinedDescription8 { get; set; }
         public string UserDefinedDescription9 { get; set; }
         public string WebSiteUrl { get; set; }
-
 
         internal void SetCollections(IReadOnlyList<StoreAddress> storeAddresses, IReadOnlyList<StoreContact> storeContact)
         {

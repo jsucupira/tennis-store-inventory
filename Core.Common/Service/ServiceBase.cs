@@ -11,11 +11,6 @@ namespace Core.Common.Service
 {
     public abstract class ServiceBase
     {
-        protected ServiceBase()
-        {
-            MefBase.Container.SatisfyImportsOnce(this);
-        }
-
         protected static T ExecuteFaultHandledOperation<T>(Func<T> codeToExecute)
         {
             return codeToExecute.Invoke();

@@ -80,6 +80,10 @@
       <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>
       <Name>Core.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data.Contracts\Data.Contracts.csproj">
+      <Project>{2C587295-3FE6-421F-9733-4379A18E26CD}</Project>
+      <Name>Data.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.CrossCutting\Domain.CrossCutting.csproj">
       <Project>{44cb1c9c-6e18-4fd7-9b35-2eecd9102702}</Project>
       <Name>Domain.CrossCutting</Name>

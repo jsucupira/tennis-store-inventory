@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Security.Permissions;
 using Core.Common.Exceptions;
-using Core.Common.Factories;
 using Core.Common.Security;
 using Domain.MasterData.StoreAggregate;
 
@@ -17,19 +17,27 @@ namespace TennisStore.Stores
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_ADMIN)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_VIEW)]
-    public static class StoreSelector
+    public class StoreSelector
     {
-        /// <summary>
-        /// Finds all.
-        /// </summary>
-        /// <returns>List&lt;Store&gt;.</returns>
-        public static List<Store> FindAll()
+        private readonly IStoreContext _storeContext;
+
+        [ImportingConstructor]
+        public StoreSelector(IStoreContext storeContext)
         {
-            return ContextFactory.Create<IStoreContext>().FindAll().Where(t => t.IsActive).ToList();
+            _storeContext = storeContext;
         }
 
         /// <summary>
-        /// Gets the specified store identifier.
+        ///     Finds all.
+        /// </summary>
+        /// <returns>List&lt;Store&gt;.</returns>
+        public List<Store> FindAll()
+        {
+            return _storeContext.FindAll().Where(t => t.IsActive).ToList();
+        }
+
+        /// <summary>
+        ///     Gets the specified store identifier.
         /// </summary>
         /// <param name="storeId">The store identifier.</param>
         /// <returns>Store.</returns>
@@ -37,13 +45,13 @@ namespace TennisStore.Stores
         /// <exception cref="NotValidException"></exception>
         /// <exception cref="ResourceNotFoundException">Store</exception>
         /// <exception cref="Core.Common.Exceptions.ResourceNotFoundException"></exception>
-        public static Store Get(string storeId)
+        public Store Get(string storeId)
         {
             Guid guid;
             if (!Guid.TryParse(storeId, out guid))
                 throw new NotValidException(storeId);
 
-            Store store = ContextFactory.Create<IStoreContext>().Get(guid);
+            Store store = _storeContext.Get(guid);
             if (store == null)
                 CreateErrors.NotFound(storeId);
 

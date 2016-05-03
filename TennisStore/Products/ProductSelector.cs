@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Security.Permissions;
 using Core.Common.Exceptions;
-using Core.Common.Factories;
 using Core.Common.Security;
 using Core.Common.Service;
+using Data.Contracts;
 using Domain.MasterData.ProductAggregate;
 
 namespace TennisStore.Products
@@ -17,15 +18,23 @@ namespace TennisStore.Products
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_ADMIN)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_VIEW)]
-    public static class ProductSelector
+    public class ProductSelector
     {
+        private readonly IProductContext _productContext;
+
+        [ImportingConstructor]
+        public ProductSelector(IProductContext productContext)
+        {
+            _productContext = productContext;
+        }
+
         /// <summary>
         /// Finds all.
         /// </summary>
         /// <returns>List&lt;Product&gt;.</returns>
-        public static List<Product> FindAll()
+        public List<Product> FindAll()
         {
-            return ContextFactory.Create<IProductContext>().FindAll().Where(t => t.IsActive).ToList();
+            return _productContext.FindAll().Where(t => t.IsActive).ToList();
         }
 
         /// <summary>
@@ -35,12 +44,12 @@ namespace TennisStore.Products
         /// <returns>Product.</returns>
         /// <exception cref="NotValidException"></exception>
         /// <exception cref="ResourceNotFoundException">Product</exception>
-        public static Product Get(string productId)
+        public Product Get(string productId)
         {
             if (string.IsNullOrEmpty(productId))
                 throw new NotValidException(productId);
 
-            Product product = ContextFactory.Create<IProductContext>().Get(productId);
+            Product product = _productContext.Get(productId);
             if (product == null)
                 CreateErrors.NotFound(productId);
 

@@ -1,4 +1,5 @@
 ﻿using Core.Common.Exceptions;
+using Core.Common.Model;
 using Domain.MasterData.ProductAggregate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TennisStore.Products;
@@ -11,27 +12,27 @@ namespace TennisStoreTests.Products
         [TestMethod]
         public void FindAllTest()
         {
-            Assert.IsTrue(ProductSelector.FindAll().Count == 15);
+            Assert.IsTrue(MefBase.Resolve<IProductContext>().FindAll().Count == 15);
         }
 
         [TestMethod]
         [ExpectedException(typeof (NotValidException))]
         public void GetBadIdTest()
         {
-            ProductSelector.Get("");
+            MefBase.Resolve<IProductContext>().Get("");
         }
 
         [TestMethod]
         [ExpectedException(typeof (ResourceNotFoundException))]
         public void GetNonExistentTest()
         {
-            ProductSelector.Get("adwda");
+            MefBase.Resolve<IProductContext>().Get("adwda");
         }
 
         [TestMethod]
         public void GetTest()
         {
-            Product product = ProductSelector.Get("1");
+            Product product = MefBase.Resolve<IProductContext>().Get("1");
             Assert.IsTrue(product.Name == "Babolat Pure Control Tour");
             Assert.IsTrue(product.StandardCost == 159.00M);
             Assert.IsTrue(product.ProductCategoryId == 1);

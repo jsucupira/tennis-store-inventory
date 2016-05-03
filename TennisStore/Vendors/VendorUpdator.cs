@@ -1,6 +1,5 @@
 ﻿using System.Security.Permissions;
 using Core.Common.Exceptions;
-using Core.Common.Factories;
 using Core.Common.Helpers;
 using Core.Common.Security;
 using Core.Common.Service;
@@ -9,52 +8,58 @@ using Domain.MasterData.VendorAggregate;
 namespace TennisStore.Vendors
 {
     /// <summary>
-    /// Class VendorUpdator.
+    ///     Class VendorUpdator.
     /// </summary>
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.ADMINISTRATOR)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_ADMIN)]
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
-    public static class VendorUpdator
+    public class VendorUpdator
     {
+        private readonly IVendorContext _vendorContext;
+
+        public VendorUpdator(IVendorContext vendorContext)
+        {
+            _vendorContext = vendorContext;
+        }
+
         /// <summary>
-        /// Creates the specified vendor.
+        ///     Creates the specified vendor.
         /// </summary>
         /// <param name="vendor">The vendor.</param>
         /// <returns>Vendor.</returns>
-        public static Vendor Create(Vendor vendor)
+        public Vendor Create(Vendor vendor)
         {
-            IVendorContext context = ContextFactory.Create<IVendorContext>();
-            if (context.Get(vendor.Id) != null)
+            if (_vendorContext.Get(vendor.Id) != null)
                 CreateErrors.ItemAlreadyExists(vendor.Id);
 
             vendor.ModifiedBy(ServiceBase.GetUserName());
             vendor.Validate();
             vendor.Activate();
-            return ContextFactory.Create<IVendorContext>().Create(vendor);
+            return _vendorContext.Create(vendor);
         }
 
         /// <summary>
-        /// Deletes the specified vendor identifier.
+        ///     Deletes the specified vendor identifier.
         /// </summary>
         /// <param name="vendorId">The vendor identifier.</param>
         /// <exception cref="NotValidException"></exception>
-        public static void Delete(string vendorId)
+        public void Delete(string vendorId)
         {
             if (string.IsNullOrEmpty(vendorId))
                 CreateErrors.NotValid(vendorId, nameof(vendorId));
 
-            ContextFactory.Create<IVendorContext>().Delete(vendorId);
+            _vendorContext.Delete(vendorId);
         }
 
         /// <summary>
-        /// Updates the specified vendor.
+        ///     Updates the specified vendor.
         /// </summary>
         /// <param name="vendor">The vendor.</param>
-        public static void Update(Vendor vendor)
+        public void Update(Vendor vendor)
         {
             vendor.ModifiedBy(ServiceBase.GetUserName());
             vendor.Validate();
-            ContextFactory.Create<IVendorContext>().Update(vendor);
+            _vendorContext.Update(vendor);
         }
     }
 }

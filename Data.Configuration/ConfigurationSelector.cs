@@ -16,10 +16,10 @@ namespace Data.Configuration
     public class ConfigurationsSelector : IConfigurationContext
     {
         private readonly ICaching _caching;
-        private readonly IServices<Core.Common.Configurations.Configuration> _configurationServices;
+        private readonly IServices<Core.Common.Configurations.Configuration, string> _configurationServices;
 
         [ImportingConstructor]
-        public ConfigurationsSelector(ICaching caching, IServices<Core.Common.Configurations.Configuration> configurationServices)
+        public ConfigurationsSelector(ICaching caching, IServices<Core.Common.Configurations.Configuration, string> configurationServices)
         {
             _caching = caching;
             _configurationServices = configurationServices;
@@ -78,7 +78,7 @@ namespace Data.Configuration
 
         public void SaveSetting(string key, string value)
         {
-            _configurationServices.Save(new Core.Common.Configurations.Configuration(key, value));
+            _configurationServices.Update(new Core.Common.Configurations.Configuration(key, value));
             SetCache(key, value);
         }
 

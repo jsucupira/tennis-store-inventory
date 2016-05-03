@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{44CB1C9C-6E18-4FD7-9B35-2EECD9102702}</ProjectGuid>
+    <ProjectGuid>{2C587295-3FE6-421F-9733-4379A18E26CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain.CrossCutting</RootNamespace>
-    <AssemblyName>Domain.CrossCutting</AssemblyName>
+    <RootNamespace>Data.Contracts</RootNamespace>
+    <AssemblyName>Data.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Products\UnitMeasure.cs" />
+    <Compile Include="ICaching.cs" />
+    <Compile Include="IConfigurationContext.cs" />
+    <Compile Include="IServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalesInfo\SalesTaxRate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

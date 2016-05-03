@@ -14,7 +14,7 @@ namespace Core.Common.Model
 
         public static T Resolve<T>()
         {
-            return Container.ResolveExportedValue<T>();
+            return Container.GetExportedValue<T>();
         }
     }
 }

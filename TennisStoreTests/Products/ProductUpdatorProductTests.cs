@@ -15,9 +15,9 @@ namespace TennisStoreTests.Products
             IProductUpdator productUpdator = MefBase.Resolve<IProductUpdator>();
             IProductSelector productSelector = MefBase.Resolve<IProductSelector>();
 
-            Assert.IsTrue(productSelector.FindAll().Count == 15);
+            Assert.IsTrue(productSelector.FindAll(true).Count == 15);
             productUpdator.Delete("5");
-            Assert.IsTrue(productSelector.FindAll().Count == 14);
+            Assert.IsTrue(productSelector.FindAll(true).Count == 14);
         }
 
         [TestMethod]

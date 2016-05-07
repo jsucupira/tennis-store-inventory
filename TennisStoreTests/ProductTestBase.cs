@@ -23,13 +23,13 @@ namespace TennisStoreTests
         public void Init()
         {
             MefLoader.Initialize();
-            IProductRepository repo = MefBase.Resolve<IProductRepository>();
+            IProductRepository repository = MefBase.Resolve<IProductRepository>();
             GenericIdentity identity = new GenericIdentity("jsucupira");
             string[] roles = {@"Administrators"};
             GenericPrincipal principal = new GenericPrincipal(identity, roles);
             Thread.CurrentPrincipal = principal;
             ProductTestData.Products.ForEach(t => t.Activate());
-            ProductTestData.Products.ForEach(t => repo.Create(t));
+            ProductTestData.Products.ForEach(t => repository.Create(t));
         }
     }
 }

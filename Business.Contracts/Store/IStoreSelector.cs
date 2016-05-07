@@ -9,7 +9,7 @@ namespace Business.Contracts.Store
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Store&gt;.</returns>
-        List<Domain.MasterData.StoreAggregate.Store> FindAll();
+        List<Domain.MasterData.StoreAggregate.Store> FindAll(bool active);
 
         /// <summary>
         ///     Gets the specified store identifier.

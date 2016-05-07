@@ -9,7 +9,7 @@ namespace Business.Contracts.Product
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Product&gt;.</returns>
-        List<Domain.MasterData.ProductAggregate.Product> FindAll();
+        List<Domain.MasterData.ProductAggregate.Product> FindAll(bool active);
 
         /// <summary>
         ///     Gets the specified product identifier.

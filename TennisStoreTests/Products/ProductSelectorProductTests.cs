@@ -13,7 +13,7 @@ namespace TennisStoreTests.Products
         public void FindAllTest()
         {
             IProductSelector selector = MefBase.Resolve<IProductSelector>();
-            Assert.IsTrue(selector.FindAll().Count == 15, $"Actual {selector.FindAll().Count}");
+            Assert.IsTrue(selector.FindAll(true).Count == 15, $"Actual {selector.FindAll(true).Count}");
         }
 
         [TestMethod]

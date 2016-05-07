@@ -34,9 +34,9 @@ namespace Business.MasterData.Products
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Product&gt;.</returns>
-        public List<Product> FindAll()
+        public List<Product> FindAll(bool active)
         {
-            return _productRepository.FindAll().Where(t => t.IsActive).ToList();
+            return _productRepository.FindAll().Where(t => t.IsActive == active).ToList();
         }
 
         /// <summary>

@@ -35,9 +35,9 @@ namespace Business.MasterData.Stores
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Store&gt;.</returns>
-        public List<Store> FindAll()
+        public List<Store> FindAll(bool active)
         {
-            return _storeRepository.FindAll().Where(t => t.IsActive).ToList();
+            return _storeRepository.FindAll().Where(t => t.IsActive == active).ToList();
         }
 
         /// <summary>

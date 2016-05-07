@@ -9,7 +9,7 @@ namespace Business.Contracts.Vendor
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Vendor&gt;.</returns>
-        List<Domain.MasterData.VendorAggregate.Vendor> FindAll();
+        List<Domain.MasterData.VendorAggregate.Vendor> FindAll(bool active);
 
         /// <summary>
         ///     Gets the specified vendor identifier.

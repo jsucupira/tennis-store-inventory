@@ -34,9 +34,9 @@ namespace Business.MasterData.Vendors
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Vendor&gt;.</returns>
-        public List<Vendor> FindAll()
+        public List<Vendor> FindAll(bool active)
         {
-            return _vendorRepository.FindAll().Where(t => t.IsActive).ToList();
+            return _vendorRepository.FindAll().Where(t => t.IsActive == active).ToList();
         }
 
         /// <summary>

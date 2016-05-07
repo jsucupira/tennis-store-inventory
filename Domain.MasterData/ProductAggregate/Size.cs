@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.MasterData.ProductAggregate
 {
+    [Serializable]
     public class Size
     {
         public string Value { get; set; }

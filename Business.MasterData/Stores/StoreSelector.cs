@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
 using System.Security.Permissions;
 using Business.Contracts.Store;
-using Core.Common.Exceptions;
 using Core.Common.Security;
 using Data.Contracts.Store;
+using Domain.MasterData.ProductAggregate;
 using Domain.MasterData.StoreAggregate;
 
 namespace Business.MasterData.Stores
@@ -21,45 +20,26 @@ namespace Business.MasterData.Stores
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_VIEW)]
     [Export(typeof(IStoreSelector))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    internal class StoreSelector : IStoreSelector
+    internal class StoreSelector : SelectorBase<Store, Guid>, IStoreSelector
     {
-        private readonly IStoreReadOnlyRepository _storeRepository;
 
         [ImportingConstructor]
-        public StoreSelector(IStoreReadOnlyRepository storeRepository)
+        public StoreSelector(IStoreReadOnlyRepository storeRepository): base(storeRepository)
         {
-            _storeRepository = storeRepository;
         }
 
-        /// <summary>
-        ///     Finds all.
-        /// </summary>
-        /// <returns>List&lt;Store&gt;.</returns>
-        public List<Store> FindAll(bool active)
-        {
-            return _storeRepository.FindAll().Where(t => t.IsActive == active).ToList();
-        }
-
-        /// <summary>
-        ///     Gets the specified store identifier.
-        /// </summary>
-        /// <param name="storeId">The store identifier.</param>
-        /// <returns>Store.</returns>
-        /// <exception cref="Core.Common.Exceptions.NotValidException"></exception>
-        /// <exception cref="NotValidException"></exception>
-        /// <exception cref="ResourceNotFoundException">Store</exception>
-        /// <exception cref="Core.Common.Exceptions.ResourceNotFoundException"></exception>
-        public Store Get(string storeId)
+        Store IStoreSelector.Get(string storeId)
         {
             Guid guid;
             if (!Guid.TryParse(storeId, out guid))
-                throw new NotValidException(storeId);
+                CreateErrors.NotValid(storeId, nameof(storeId));
 
-            Store store = _storeRepository.Get(guid);
-            if (store == null)
-                CreateErrors.NotFound(storeId);
+            return Get(guid);
+        }
 
-            return store;
+        List<Store> IStoreSelector.FindAll(bool active)
+        {
+            return FindAll(active);
         }
     }
 }

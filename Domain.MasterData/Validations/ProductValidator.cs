@@ -1,3 +1,4 @@
+using System;
 using Domain.MasterData.ProductAggregate;
 using FluentValidation;
 

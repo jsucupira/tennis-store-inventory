@@ -1,9 +1,11 @@
+using System;
 using Core.Common.Model;
 using Domain.MasterData.Validations;
 using FluentValidation;
 
 namespace Domain.MasterData.ProductAggregate
 {
+    [Serializable]
     public sealed class ProductCategory : Entity<int>
     {
         private ProductCategory()

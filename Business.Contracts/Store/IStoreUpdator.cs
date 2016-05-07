@@ -5,23 +5,23 @@ namespace Business.Contracts.Store
     public interface IStoreUpdator
     {
         /// <summary>
-        ///     Creates the specified store.
+        ///     Creates the specified entity.
         /// </summary>
-        /// <param name="store">The store.</param>
+        /// <param name="entity">The entity.</param>
         /// <returns>Store.</returns>
-        Domain.MasterData.StoreAggregate.Store Create(Domain.MasterData.StoreAggregate.Store store);
+        Domain.MasterData.StoreAggregate.Store Create(Domain.MasterData.StoreAggregate.Store entity);
 
         /// <summary>
-        ///     Deletes the specified store identifier.
+        ///     Deletes the specified entity identifier.
         /// </summary>
-        /// <param name="storeId">The store identifier.</param>
+        /// <param name="storeId">The entity identifier.</param>
         /// <exception cref="NotValidException"></exception>
         void Delete(string storeId);
 
         /// <summary>
-        ///     Updates the specified store.
+        ///     Updates the specified entity.
         /// </summary>
-        /// <param name="store">The store.</param>
-        void Update(Domain.MasterData.StoreAggregate.Store store);
+        /// <param name="entity">The entity.</param>
+        void Update(Domain.MasterData.StoreAggregate.Store entity);
     }
 }

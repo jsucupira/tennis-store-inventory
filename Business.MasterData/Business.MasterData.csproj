@@ -51,8 +51,10 @@
     <Compile Include="Products\ProductSelector.cs" />
     <Compile Include="Products\ProductUpdator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectorBase.cs" />
     <Compile Include="Stores\StoreSelector.cs" />
     <Compile Include="Stores\StoreUpdator.cs" />
+    <Compile Include="UpdatorBase.cs" />
     <Compile Include="Vendors\VendorSelector.cs" />
     <Compile Include="Vendors\VendorUpdator.cs" />
   </ItemGroup>

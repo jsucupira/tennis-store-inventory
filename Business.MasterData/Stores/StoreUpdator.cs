@@ -2,11 +2,14 @@
 using System.ComponentModel.Composition;
 using System.Security.Permissions;
 using Business.Contracts.Store;
+using Business.MasterData.Vendors;
 using Core.Common.Exceptions;
 using Core.Common.Helpers;
 using Core.Common.Security;
 using Core.Common.Service;
+using Data.Contracts;
 using Data.Contracts.Store;
+using Domain.MasterData.ProductAggregate;
 using Domain.MasterData.StoreAggregate;
 
 namespace Business.MasterData.Stores
@@ -19,55 +22,45 @@ namespace Business.MasterData.Stores
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
     [Export(typeof(IStoreUpdator))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    internal class StoreUpdator : IStoreUpdator
+    internal class StoreUpdator : UpdatorBase<Store, Guid>, IStoreUpdator
     {
-        private readonly IStoreRepository _storeRepository;
 
         [ImportingConstructor]
-        public StoreUpdator(IStoreRepository storeRepository)
+        public StoreUpdator(IStoreRepository storeRepository, IArchiverRepository archiverRepository, IQueueRepository queueRepository): base(storeRepository, archiverRepository, queueRepository)
         {
-            _storeRepository = storeRepository;
         }
 
         /// <summary>
-        ///     Creates the specified store.
+        ///     Creates the specified entity.
         /// </summary>
-        /// <param name="store">The store.</param>
+        /// <param name="entity">The entity.</param>
         /// <returns>Store.</returns>
-        public Store Create(Store store)
+        Store IStoreUpdator.Create(Store entity)
         {
-            if (_storeRepository.Get(store.Id) != null)
-                CreateErrors.ItemAlreadyExists(store.Id);
-
-            store.ModifiedBy(ServiceBase.GetUserName());
-            store.Validate();
-            store.Activate();
-            return _storeRepository.Create(store);
+            return Create(entity);
         }
 
         /// <summary>
-        ///     Deletes the specified store identifier.
+        ///     Deletes the specified entity identifier.
         /// </summary>
-        /// <param name="storeId">The store identifier.</param>
+        /// <param name="storeId">The entity identifier.</param>
         /// <exception cref="NotValidException"></exception>
-        public void Delete(string storeId)
+        void IStoreUpdator.Delete(string storeId)
         {
             Guid guid;
             if (!Guid.TryParse(storeId, out guid))
                 CreateErrors.NotValid(storeId, nameof(storeId));
 
-            _storeRepository.Delete(guid);
+            Delete(guid);
         }
 
         /// <summary>
-        ///     Updates the specified store.
+        ///     Updates the specified entity.
         /// </summary>
-        /// <param name="store">The store.</param>
-        public void Update(Store store)
+        /// <param name="entity">The entity.</param>
+        void IStoreUpdator.Update(Store entity)
         {
-            store.ModifiedBy(ServiceBase.GetUserName());
-            store.Validate();
-            _storeRepository.Update(store);
+            Update(entity);
         }
     }
 }

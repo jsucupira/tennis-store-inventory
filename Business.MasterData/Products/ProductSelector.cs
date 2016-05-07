@@ -20,42 +20,32 @@ namespace Business.MasterData.Products
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_VIEW)]
     [Export(typeof(IProductSelector))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    internal class ProductSelector : IProductSelector
+    internal class ProductSelector : SelectorBase<Product, string>, IProductSelector
     {
-        private readonly IProductReadOnlyRepository _productRepository;
-
         [ImportingConstructor]
-        public ProductSelector(IProductReadOnlyRepository productRepository)
+        public ProductSelector(IProductReadOnlyRepository productRepository): base(productRepository)
         {
-            _productRepository = productRepository;
         }
 
         /// <summary>
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Product&gt;.</returns>
-        public List<Product> FindAll(bool active)
+        List<Product> IProductSelector.FindAll(bool active)
         {
-            return _productRepository.FindAll().Where(t => t.IsActive == active).ToList();
+            return FindAll(active);
         }
 
         /// <summary>
         ///     Gets the specified product identifier.
         /// </summary>
-        /// <param name="productId">The product identifier.</param>
+        /// <param name="id">The product identifier.</param>
         /// <returns>Product.</returns>
         /// <exception cref="NotValidException"></exception>
         /// <exception cref="ResourceNotFoundException">Product</exception>
-        public Product Get(string productId)
+        Product IProductSelector.Get(string id)
         {
-            if (string.IsNullOrEmpty(productId))
-                throw new NotValidException(productId);
-
-            Product product = _productRepository.Get(productId);
-            if (product == null)
-                CreateErrors.NotFound(productId);
-
-            return product;
+            return Get(id);
         }
     }
 }

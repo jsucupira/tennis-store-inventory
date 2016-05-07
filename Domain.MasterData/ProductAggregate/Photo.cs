@@ -5,6 +5,7 @@ using FluentValidation;
 
 namespace Domain.MasterData.ProductAggregate
 {
+    [Serializable]
     public sealed class Photo : Entity<Guid>
     {
         private Photo()

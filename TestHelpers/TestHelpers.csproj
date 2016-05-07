@@ -47,6 +47,7 @@
     <Compile Include="Mocks\InMemoryVendorContext.cs" />
     <Compile Include="Mocks\InMemoryStoreContext.cs" />
     <Compile Include="Mocks\InMemoryProductContext.cs" />
+    <Compile Include="Mocks\ArchiverMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

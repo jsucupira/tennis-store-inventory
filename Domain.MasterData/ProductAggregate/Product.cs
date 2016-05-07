@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Core.Common.Model;
-using Domain.CrossCutting.Products;
 using Domain.MasterData.Validations;
 using FluentValidation;
 
 namespace Domain.MasterData.ProductAggregate
 {
+    [Serializable]
     public sealed class Product : Entity<string>
     {
         private Product()
@@ -43,7 +44,7 @@ namespace Domain.MasterData.ProductAggregate
         {
             return new ProductValidator();
         }
-        
+
         internal void SetCollections(List<Photo> photos)
         {
             ProductPhotos = photos.AsReadOnly();

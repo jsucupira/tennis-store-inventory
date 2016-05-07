@@ -5,23 +5,23 @@ namespace Business.Contracts.Vendor
     public interface IVendorUpdator
     {
         /// <summary>
-        ///     Creates the specified vendor.
+        ///     Creates the specified entity.
         /// </summary>
-        /// <param name="vendor">The vendor.</param>
+        /// <param name="entity">The entity.</param>
         /// <returns>Vendor.</returns>
-        Domain.MasterData.VendorAggregate.Vendor Create(Domain.MasterData.VendorAggregate.Vendor vendor);
+        Domain.MasterData.VendorAggregate.Vendor Create(Domain.MasterData.VendorAggregate.Vendor entity);
 
         /// <summary>
-        ///     Deletes the specified vendor identifier.
+        ///     Deletes the specified entity identifier.
         /// </summary>
-        /// <param name="vendorId">The vendor identifier.</param>
+        /// <param name="vendorId">The entity identifier.</param>
         /// <exception cref="NotValidException"></exception>
         void Delete(string vendorId);
 
         /// <summary>
-        ///     Updates the specified vendor.
+        ///     Updates the specified entity.
         /// </summary>
-        /// <param name="vendor">The vendor.</param>
-        void Update(Domain.MasterData.VendorAggregate.Vendor vendor);
+        /// <param name="entity">The entity.</param>
+        void Update(Domain.MasterData.VendorAggregate.Vendor entity);
     }
 }

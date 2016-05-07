@@ -7,6 +7,7 @@ using FluentValidation;
 
 namespace Domain.MasterData.VendorAggregate
 {
+    [Serializable]
     public sealed class VendorProduct : Entity<Guid>
     {
         public VendorProduct(string vendorId, string vendorProductKey, decimal standardPrice, UnitMeasure unitMeasure) 

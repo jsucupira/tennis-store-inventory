@@ -20,23 +20,21 @@ namespace Business.MasterData.Vendors
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_VIEW)]
     [Export(typeof(IVendorSelector))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    internal class VendorSelector : IVendorSelector
+    internal class VendorSelector : SelectorBase<Vendor, string>, IVendorSelector
     {
-        private readonly IVendorReadOnlyRepository _vendorRepository;
 
         [ImportingConstructor]
-        public VendorSelector(IVendorReadOnlyRepository vendorRepository)
+        public VendorSelector(IVendorReadOnlyRepository vendorRepository): base(vendorRepository)
         {
-            _vendorRepository = vendorRepository;
         }
 
         /// <summary>
         ///     Finds all.
         /// </summary>
         /// <returns>List&lt;Vendor&gt;.</returns>
-        public List<Vendor> FindAll(bool active)
+        List<Vendor> IVendorSelector.FindAll(bool active)
         {
-            return _vendorRepository.FindAll().Where(t => t.IsActive == active).ToList();
+            return FindAll(active);
         }
 
         /// <summary>
@@ -46,16 +44,9 @@ namespace Business.MasterData.Vendors
         /// <returns>Vendor.</returns>
         /// <exception cref="NotValidException"></exception>
         /// <exception cref="ResourceNotFoundException">Vendor</exception>
-        public Vendor Get(string vendorId)
+        Vendor IVendorSelector.Get(string vendorId)
         {
-            if (string.IsNullOrEmpty(vendorId))
-                throw new NotValidException(vendorId);
-
-            Vendor vendor = _vendorRepository.Get(vendorId);
-            if (vendor == null)
-                CreateErrors.NotFound(vendorId);
-
-            return vendor;
+            return Get(vendorId);
         }
     }
 }

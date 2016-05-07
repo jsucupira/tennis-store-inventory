@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="ICaching.cs" />
     <Compile Include="IConfigurationRepository.cs" />
+    <Compile Include="IArchiverRepository.cs" />
+    <Compile Include="IQueueRepository.cs" />
     <Compile Include="Product\IProductRepository.cs" />
     <Compile Include="Product\IProductReadOnlyRepository.cs" />
     <Compile Include="IReadOnlyRepository.cs" />

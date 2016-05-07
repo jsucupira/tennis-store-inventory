@@ -1,12 +1,16 @@
 ﻿using System.ComponentModel.Composition;
 using System.Security.Permissions;
 using Business.Contracts.Product;
+using Business.MasterData.Vendors;
 using Core.Common.Exceptions;
 using Core.Common.Helpers;
+using Core.Common.Model;
 using Core.Common.Security;
 using Core.Common.Service;
+using Data.Contracts;
 using Data.Contracts.Product;
 using Domain.MasterData.ProductAggregate;
+using Domain.MasterData.VendorAggregate;
 
 namespace Business.MasterData.Products
 {
@@ -18,14 +22,12 @@ namespace Business.MasterData.Products
     [PrincipalPermission(SecurityAction.Demand, Role = SecurityGroups.MASTER_DATA_EDITOR)]
     [Export(typeof(IProductUpdator))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    internal class ProductUpdator : IProductUpdator
+    internal class ProductUpdator : UpdatorBase<Product, string>, IProductUpdator
     {
-        private readonly IProductRepository _productContext;
 
         [ImportingConstructor]
-        public ProductUpdator(IProductRepository productContext)
+        public ProductUpdator(IProductRepository productRepository, IArchiverRepository archiverRepository, IQueueRepository queueRepository): base(productRepository, archiverRepository, queueRepository)
         {
-            _productContext = productContext;
         }
 
         /// <summary>
@@ -33,15 +35,9 @@ namespace Business.MasterData.Products
         /// </summary>
         /// <param name="product">The product.</param>
         /// <returns>Product.</returns>
-        public Product Create(Product product)
+        Product IProductUpdator.Create(Product product)
         {
-            if (_productContext.Get(product.Id) != null)
-                CreateErrors.ItemAlreadyExists(product.Id);
-
-            product.ModifiedBy(ServiceBase.GetUserName());
-            product.Validate();
-            product.Activate();
-            return _productContext.Create(product);
+            return Create(product);
         }
 
         /// <summary>
@@ -49,30 +45,18 @@ namespace Business.MasterData.Products
         /// </summary>
         /// <param name="productId">The product identifier.</param>
         /// <exception cref="NotValidException"></exception>
-        public void Delete(string productId)
+        void IProductUpdator.Delete(string productId)
         {
-            if (string.IsNullOrEmpty(productId))
-                CreateErrors.NotValid(productId, nameof(productId));
-
-            Product product = _productContext.Get(productId);
-
-            if (product != null)
-            {
-                product.ModifiedBy(ServiceBase.GetUserName());
-                product.DeActivate();
-                _productContext.Update(product);
-            }
+            Delete(productId);
         }
 
         /// <summary>
         ///     Updates the specified product.
         /// </summary>
         /// <param name="product">The product.</param>
-        public void Update(Product product)
+        void IProductUpdator.Update(Product product)
         {
-            product.ModifiedBy(ServiceBase.GetUserName());
-            product.Validate();
-            _productContext.Update(product);
+            Update(product);
         }
     }
 }

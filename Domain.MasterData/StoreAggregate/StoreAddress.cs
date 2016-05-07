@@ -5,6 +5,7 @@ using FluentValidation;
 
 namespace Domain.MasterData.StoreAggregate
 {
+    [Serializable]
     public sealed class StoreAddress : Entity<int>
     {
         private StoreAddress()

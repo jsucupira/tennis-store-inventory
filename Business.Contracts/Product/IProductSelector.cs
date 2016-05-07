@@ -14,10 +14,10 @@ namespace Business.Contracts.Product
         /// <summary>
         ///     Gets the specified product identifier.
         /// </summary>
-        /// <param name="productId">The product identifier.</param>
+        /// <param name="id">The product identifier.</param>
         /// <returns>Product.</returns>
         /// <exception cref="NotValidException"></exception>
         /// <exception cref="ResourceNotFoundException">Product</exception>
-        Domain.MasterData.ProductAggregate.Product Get(string productId);
+        Domain.MasterData.ProductAggregate.Product Get(string id);
     }
 }

@@ -7,7 +7,7 @@ namespace Core.Common.Extensions
     {
         public static List<T> ToFullyLoaded<T>(this IQueryable<T> query)
         {
-            return query.ToArray().ToList();
+            return query.ToList();
         }
     }
 }

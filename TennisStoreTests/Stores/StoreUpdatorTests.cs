@@ -2,23 +2,24 @@
 
 namespace TennisStoreTests.Stores
 {
-    [TestClass()]
+    [TestClass]
+    [Ignore]
     public class StoreUpdatorTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void CreateTest()
         {
             Assert.Fail();
         }
 
-        [TestMethod()]
-        public void UpdateTest()
+        [TestMethod]
+        public void DeleteTest()
         {
             Assert.Fail();
         }
 
-        [TestMethod()]
-        public void DeleteTest()
+        [TestMethod]
+        public void UpdateTest()
         {
             Assert.Fail();
         }

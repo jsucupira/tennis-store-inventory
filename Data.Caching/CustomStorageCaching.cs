@@ -2,6 +2,8 @@
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Runtime.Caching;
+using Core.Common;
+using Core.Common.Extensions;
 using Data.Contracts;
 
 namespace Data.Caching
@@ -9,7 +11,7 @@ namespace Data.Caching
     /// <summary>
     /// Class CustomStorageCaching.
     /// </summary>
-    [Export(typeof(ICaching))]
+    [MefExport(typeof(ICaching), Constants.MEMORY_CACHE)]
     [PartCreationPolicy(CreationPolicy.Shared)]
     public  class CustomStorageCaching : ICaching
     {

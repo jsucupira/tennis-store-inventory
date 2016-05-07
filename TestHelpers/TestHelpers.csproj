@@ -50,6 +50,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business.Contracts\Business.Contracts.csproj">
+      <Project>{3087c5d9-0bcb-4b40-8db1-2b27d5f02074}</Project>
+      <Name>Business.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Business.MasterData\Business.MasterData.csproj">
+      <Project>{865C364B-8B0E-441E-BF5F-289F1AA4654D}</Project>
+      <Name>Business.MasterData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
       <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>
       <Name>Core.Common</Name>

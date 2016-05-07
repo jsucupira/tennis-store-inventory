@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
@@ -42,9 +43,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICaching.cs" />
-    <Compile Include="IConfigurationContext.cs" />
-    <Compile Include="IServices.cs" />
+    <Compile Include="IConfigurationRepository.cs" />
+    <Compile Include="Product\IProductRepository.cs" />
+    <Compile Include="Product\IProductReadOnlyRepository.cs" />
+    <Compile Include="IReadOnlyRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Store\IStoreReadOnlyRepository.cs" />
+    <Compile Include="Store\IStoreRepository.cs" />
+    <Compile Include="Vendor\IVendorReadOnlyRepository.cs" />
+    <Compile Include="Vendor\IVendorRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.CrossCutting\Domain.CrossCutting.csproj">
+      <Project>{44cb1c9c-6e18-4fd7-9b35-2eecd9102702}</Project>
+      <Name>Domain.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.MasterData\Domain.MasterData.csproj">
+      <Project>{52c106ad-6c45-406a-8a26-6c1453799c52}</Project>
+      <Name>Domain.MasterData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

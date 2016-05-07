@@ -7,20 +7,20 @@ namespace Core.Common.Validations
     {
         public enum CardTypes
         {
-            MasterCard,
-            Visa,
-            Amex,
-            DinersClub,
-            EnRoute,
-            Discover,
-            Jcb,
-            Unknown,
-            ChinaUnionPay,
-            InterPayment,
-            Maestro,
-            Dankort,
-            Laser,
-            UnionPay
+            MasterCard = 0,
+            Visa = 1,
+            Amex = 2,
+            DinersClub = 3,
+            EnRoute = 4,
+            Discover = 5,
+            Jcb = 6,
+            Unknown = 7,
+            ChinaUnionPay = 8,
+            InterPayment = 9,
+            Maestro = 10,
+            Dankort = 11,
+            Laser = 12,
+            UnionPay = 13
         }
 
         public static bool IsValidEmail(this string emailToValidate)

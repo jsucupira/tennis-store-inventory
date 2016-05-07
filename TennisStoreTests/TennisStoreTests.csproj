@@ -51,17 +51,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Products\ProductSelectorTests.cs" />
+    <Compile Include="Products\ProductSelectorProductTests.cs" />
     <Compile Include="Products\ProductTestData.cs" />
-    <Compile Include="Products\ProductUpdatorTests.cs" />
+    <Compile Include="Products\ProductUpdatorProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stores\StoreSelectorTests.cs" />
     <Compile Include="Stores\StoreUpdatorTests.cs" />
-    <Compile Include="TestBase.cs" />
+    <Compile Include="ProductTestBase.cs" />
     <Compile Include="Vendors\VendorSelectorTests.cs" />
     <Compile Include="Vendors\VendorUpdatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business.Contracts\Business.Contracts.csproj">
+      <Project>{3087c5d9-0bcb-4b40-8db1-2b27d5f02074}</Project>
+      <Name>Business.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
       <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>
       <Name>Core.Common</Name>
@@ -77,10 +81,6 @@
     <ProjectReference Include="..\Domain.MasterData\Domain.MasterData.csproj">
       <Project>{52c106ad-6c45-406a-8a26-6c1453799c52}</Project>
       <Name>Domain.MasterData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TennisStore\TennisStore.csproj">
-      <Project>{7CD2E322-F583-422F-8154-80A8FC608561}</Project>
-      <Name>TennisStore</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">
       <Project>{80451320-82b2-4ea5-b377-7f616144c45a}</Project>

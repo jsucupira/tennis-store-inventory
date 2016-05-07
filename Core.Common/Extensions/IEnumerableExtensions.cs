@@ -59,7 +59,9 @@ namespace Core.Common.Extensions
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
             foreach (T element in source)
+            {
                 action(element);
+            }
         }
 
         public static string WriteToCsvFile<T>(this IEnumerable<T> items, string delimiter, string[] rowsToExclude = null)

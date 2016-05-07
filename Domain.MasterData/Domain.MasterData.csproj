@@ -45,13 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductAggregate\IProductContext.cs" />
     <Compile Include="ProductAggregate\Photo.cs" />
     <Compile Include="ProductAggregate\Product.cs" />
     <Compile Include="ProductAggregate\ProductCategory.cs" />
     <Compile Include="ProductAggregate\Size.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StoreAggregate\IStoreContext.cs" />
     <Compile Include="StoreAggregate\Store.cs" />
     <Compile Include="StoreAggregate\StoreAddress.cs" />
     <Compile Include="StoreAggregate\StoreContact.cs" />
@@ -65,7 +63,6 @@
     <Compile Include="Validations\VendorContactValidator.cs" />
     <Compile Include="Validations\VendorProductValidator.cs" />
     <Compile Include="Validations\VendorValidator.cs" />
-    <Compile Include="VendorAggregate\IVendorContext.cs" />
     <Compile Include="VendorAggregate\Vendor.cs" />
     <Compile Include="VendorAggregate\VendorAddress.cs" />
     <Compile Include="VendorAggregate\VendorContact.cs" />
@@ -79,10 +76,6 @@
     <ProjectReference Include="..\Core.Common\Core.Common.csproj">
       <Project>{84332648-8ec6-4bb4-a3b4-62f698027690}</Project>
       <Name>Core.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Data.Contracts\Data.Contracts.csproj">
-      <Project>{2C587295-3FE6-421F-9733-4379A18E26CD}</Project>
-      <Name>Data.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain.CrossCutting\Domain.CrossCutting.csproj">
       <Project>{44cb1c9c-6e18-4fd7-9b35-2eecd9102702}</Project>

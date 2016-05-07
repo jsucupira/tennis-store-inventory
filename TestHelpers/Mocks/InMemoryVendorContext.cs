@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using Domain.MasterData.ProductAggregate;
+using Data.Contracts.Vendor;
 using Domain.MasterData.VendorAggregate;
 
 namespace TestHelpers.Mocks
 {
-    [Export(typeof (IVendorContext))]
+    [Export(typeof(IVendorRepository))]
+    [Export(typeof(IVendorReadOnlyRepository))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class InMemoryVendorContext : IVendorContext
+    public class InMemoryVendorContext : IVendorReadOnlyRepository, IVendorRepository
     {
         private readonly InMemoryStorage<Vendor, string> _inMemoryStorage = new InMemoryStorage<Vendor, string>();
 

@@ -3,6 +3,7 @@
 namespace TennisStoreTests.Stores
 {
     [TestClass]
+    [Ignore]
     public class StoreSelectorTests
     {
         [TestMethod]

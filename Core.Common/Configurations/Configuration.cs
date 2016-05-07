@@ -1,5 +1,8 @@
-﻿namespace Core.Common.Configurations
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Core.Common.Configurations
 {
+    [ExcludeFromCodeCoverage]
     public class Configuration
     {
         private Configuration() { }

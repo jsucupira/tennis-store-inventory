@@ -1,10 +1,9 @@
-﻿using Core.Common.Model;
+﻿using System.Diagnostics.CodeAnalysis;
+using Core.Common.Model;
 
 namespace Core.Common.Helpers
 {
-    /// <summary>
-    /// Class Utility.
-    /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class Utility
     {
         /// <summary>

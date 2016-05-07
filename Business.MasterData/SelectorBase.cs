@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Common.Exceptions;
@@ -51,7 +52,7 @@ namespace Business.MasterData
             if (id == null)
                 CreateErrors.NotValid("", nameof(id));
 
-            if (id != null && string.IsNullOrEmpty(id.ToString()))
+            if (string.IsNullOrEmpty(id.ToString()) ||id.ToString() == Guid.Empty.ToString() || id.ToString() == "0")
                 throw new NotValidException(id.ToString());
 
             T entity = ReadOnlyRepository.Get(id);

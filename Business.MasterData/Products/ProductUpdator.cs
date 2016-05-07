@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.Security.Permissions;
 using Business.Contracts.Product;
 using Business.MasterData.Vendors;
@@ -37,6 +38,9 @@ namespace Business.MasterData.Products
         /// <returns>Product.</returns>
         Product IProductUpdator.Create(Product product)
         {
+            if (product != null && string.IsNullOrEmpty(product.Id))
+                product.Id = Guid.NewGuid().ToString();
+
             return Create(product);
         }
 

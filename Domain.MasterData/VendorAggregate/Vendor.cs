@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Core.Common.Model;
 using Domain.MasterData.Validations;
 using FluentValidation;
 
 namespace Domain.MasterData.VendorAggregate
 {
+    [ExcludeFromCodeCoverage]
     [Serializable]
     public sealed class Vendor : Entity<string>
     {

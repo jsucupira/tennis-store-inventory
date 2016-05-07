@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -9,6 +10,7 @@ using Core.Common.Security;
 
 namespace Core.Common.Service
 {
+    [ExcludeFromCodeCoverage]
     public class ServiceBase
     {
         public static T ExecuteFaultHandledOperation<T>(Func<T> codeToExecute)

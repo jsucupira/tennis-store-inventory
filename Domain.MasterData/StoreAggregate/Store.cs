@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Core.Common.Model;
 using Domain.MasterData.Validations;
 using FluentValidation;
@@ -7,6 +8,7 @@ using FluentValidation;
 namespace Domain.MasterData.StoreAggregate
 {
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public sealed class Store : Entity<Guid>
     {
         public Store(string name, string description)

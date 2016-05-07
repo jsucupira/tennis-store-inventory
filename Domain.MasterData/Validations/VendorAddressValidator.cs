@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Domain.MasterData.VendorAggregate;
 using FluentValidation;
 
 namespace Domain.MasterData.Validations
 {
+    [ExcludeFromCodeCoverage]
     public class VendorAddressValidator : AbstractValidator<VendorAddress>
     {
         public VendorAddressValidator()
@@ -12,6 +14,7 @@ namespace Domain.MasterData.Validations
             RuleFor(t => t.City).NotEmpty();
             RuleFor(t => t.Region).NotEmpty();
             RuleFor(t => t.PostalCode).NotEmpty();
+            RuleFor(t => t.Id).NotEmpty();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.Caching;
 using Core.Common;
@@ -13,6 +14,7 @@ namespace Data.Caching
     /// </summary>
     [MefExport(typeof(ICaching), Constants.MEMORY_CACHE)]
     [PartCreationPolicy(CreationPolicy.Shared)]
+    [ExcludeFromCodeCoverage]
     public  class CustomStorageCaching : ICaching
     {
         /// <summary>

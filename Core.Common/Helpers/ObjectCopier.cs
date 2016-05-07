@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Common.Helpers
 {
+    [ExcludeFromCodeCoverage]
     public static class ObjectCopier
     {
         /// <summary>

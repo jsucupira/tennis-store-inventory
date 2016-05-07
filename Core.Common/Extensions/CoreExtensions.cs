@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 
 namespace Core.Common.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class CoreExtensions
     {
         public static object CreateDynamicShapedObject(this object @object, List<string> fields)

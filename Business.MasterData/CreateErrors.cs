@@ -1,7 +1,9 @@
-﻿using Core.Common.Exceptions;
+﻿using System.Diagnostics.CodeAnalysis;
+using Core.Common.Exceptions;
 
 namespace Business.MasterData
 {
+    [ExcludeFromCodeCoverage]
     internal static class CreateErrors
     {
         public static void ItemAlreadyExists(object itemId)

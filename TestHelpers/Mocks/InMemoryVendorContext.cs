@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Diagnostics.CodeAnalysis;
 using Data.Contracts.Vendor;
 using Domain.MasterData.VendorAggregate;
 
 namespace TestHelpers.Mocks
 {
+    [ExcludeFromCodeCoverage]
     [Export(typeof(IVendorRepository))]
     [Export(typeof(IVendorReadOnlyRepository))]
     [PartCreationPolicy(CreationPolicy.NonShared)]

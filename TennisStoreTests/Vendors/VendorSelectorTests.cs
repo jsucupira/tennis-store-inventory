@@ -1,9 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TennisStoreTests.Vendors
 {
     [TestClass]
     [Ignore]
+    [ExcludeFromCodeCoverage]
     public class VendorSelectorTests
     {
         [TestMethod]

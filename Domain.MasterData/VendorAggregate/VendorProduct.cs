@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Core.Common.Model;
 using Domain.CrossCutting.Products;
 using Domain.MasterData.ProductAggregate;
@@ -7,6 +8,7 @@ using FluentValidation;
 
 namespace Domain.MasterData.VendorAggregate
 {
+    [ExcludeFromCodeCoverage]
     [Serializable]
     public sealed class VendorProduct : Entity<Guid>
     {

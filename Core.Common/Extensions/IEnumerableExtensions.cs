@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Linq.Dynamic;
 
 namespace Core.Common.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class EnumerableExtensions
     {
         public static IEnumerable<T> AsEmptyIfNull<T>(this IEnumerable<T> source)

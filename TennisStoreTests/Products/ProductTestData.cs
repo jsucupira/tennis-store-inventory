@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Domain.CrossCutting.Products;
 using Domain.MasterData.ProductAggregate;
 
 namespace TennisStoreTests.Products
 {
+    [ExcludeFromCodeCoverage]
     public static class ProductTestData
     {
         public static readonly IReadOnlyList<Product> Products = new List<Product>

@@ -1,10 +1,12 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Core.Common.Model;
 using Domain.MasterData.Validations;
 using FluentValidation;
 
 namespace Domain.MasterData.VendorAggregate
 {
+    [ExcludeFromCodeCoverage]
     [Serializable]
     public sealed class VendorContact : Entity<int>
     {

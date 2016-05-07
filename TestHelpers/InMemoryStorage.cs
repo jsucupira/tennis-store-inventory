@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Core.Common.Model;
 
 namespace TestHelpers
 {
+    [ExcludeFromCodeCoverage]
     public class InMemoryStorage<T, TId> where T : Entity<TId>
     {
         private static readonly Dictionary<Type, Dictionary<string, object>> _tables = new Dictionary<Type, Dictionary<string, object>>();

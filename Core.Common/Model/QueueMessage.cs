@@ -1,10 +1,12 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
 namespace Core.Common.Model
 {
+    [ExcludeFromCodeCoverage]
     /// <summary>
     /// Class QueueMessage.
     /// </summary>

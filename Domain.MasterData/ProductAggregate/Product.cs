@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Core.Common.Model;
 using Domain.MasterData.Validations;
@@ -8,6 +9,7 @@ using FluentValidation;
 namespace Domain.MasterData.ProductAggregate
 {
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public sealed class Product : Entity<string>
     {
         private Product()
@@ -38,7 +40,6 @@ namespace Domain.MasterData.ProductAggregate
         public decimal StandardCost { get; set; }
         public double Weight { get; set; }
         public string WeightUnitMeasureCode { get; set; }
-
 
         protected override IValidator GetValidator()
         {

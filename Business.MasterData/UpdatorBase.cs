@@ -1,3 +1,4 @@
+using System;
 using Core.Common.Helpers;
 using Core.Common.Model;
 using Core.Common.Service;
@@ -48,6 +49,9 @@ namespace Business.MasterData
             if (entity == null)
                 CreateErrors.NotValid("", nameof(entity));
 
+            if (string.IsNullOrEmpty(entity?.Id.ToString()) || entity.Id.ToString() == Guid.Empty.ToString() || entity.Id.ToString() == "0")
+                CreateErrors.NotValid("", nameof(entity.Id));
+
             if (Repository.Get(entity.Id) != null)
                 CreateErrors.ItemAlreadyExists(entity.Id);
 
@@ -68,11 +72,8 @@ namespace Business.MasterData
             if (id == null)
                 CreateErrors.NotValid("", nameof(id));
 
-            if (id is string)
-            {
-                if (string.IsNullOrEmpty(id.ToString()))
-                    CreateErrors.NotValid(id.ToString(), nameof(id));
-            }
+            if (string.IsNullOrEmpty(id.ToString()) || id.ToString() == Guid.Empty.ToString() || id.ToString() == "0")
+                CreateErrors.NotValid(id.ToString(), nameof(id));
             
             T entity = Repository.Get(id);
 
@@ -95,6 +96,9 @@ namespace Business.MasterData
         {
             if (entity == null)
                 CreateErrors.NotValid("", nameof(entity));
+
+            if (string.IsNullOrEmpty(entity?.Id.ToString()) || entity.Id.ToString() == Guid.Empty.ToString() || entity.Id.ToString() == "0")
+                CreateErrors.NotValid("", nameof(entity.Id));
 
             T original = Repository.Get(entity.Id);
             entity.ModifiedBy(ServiceBase.GetUserName());

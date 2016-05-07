@@ -1,5 +1,8 @@
-﻿namespace Core.Common.Security
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Core.Common.Security
 {
+    [ExcludeFromCodeCoverage]
     public static class SecurityGroups
     {
         public const string ADMINISTRATOR = "Administrators";

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Core.Common.Helpers
 {
+    [ExcludeFromCodeCoverage]
     public static class PropertySupport
     {
         public static string ExtractPropertyName<T>(Expression<Func<T>> propertyExpression)

@@ -1,8 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TennisStoreTests.Vendors
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     [Ignore]
     public class VendorUpdatorTests
     {

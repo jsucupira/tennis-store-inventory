@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace Core.Common.Model
 {
+    [ExcludeFromCodeCoverage]
     [Serializable]
     public abstract class Entity<TId> : IDataErrorInfo, IEntity
     {
@@ -24,7 +26,7 @@ namespace Core.Common.Model
 
         public DateTime CreatedDate { get; protected set; }
 
-        public TId Id { get; protected set; }
+        public TId Id { get; set; }
 
         public bool IsActive { get; private set; }
         public string LastModifiedBy { get; private set; }

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using Core.Common.Model;
 using Data.Contracts;
 using System.ComponentModel.Composition;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TestHelpers.Mocks
 {
+    [ExcludeFromCodeCoverage]
     [Export(typeof(IArchiverRepository))]
     internal class ArchiverMock : IArchiverRepository
     {
@@ -19,6 +21,7 @@ namespace TestHelpers.Mocks
         }
     }
 
+    [ExcludeFromCodeCoverage]
     [Export(typeof(IQueueRepository))]
     internal class QueueMock: IQueueRepository
     {

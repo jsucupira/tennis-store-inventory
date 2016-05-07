@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Security.Principal;
 using System.Threading;
 using Core.Common.Extensions;
 using Core.Common.Model;
@@ -10,6 +11,7 @@ using TestHelpers;
 namespace TennisStoreTests
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class ProductTestBase
     {
         [TestCleanup]

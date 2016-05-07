@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Core.Common.Validations
 {
+    [ExcludeFromCodeCoverage]
     public static class RegexPatterns
     {
         public const string ALPHA = @"^[a-zA-Z]*$";

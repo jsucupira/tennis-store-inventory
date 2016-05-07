@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Domain.MasterData.VendorAggregate;
 using FluentValidation;
 
 namespace Domain.MasterData.Validations
 {
+    [ExcludeFromCodeCoverage]
     public sealed class VendorValidator : AbstractValidator<Vendor>
     {
         public VendorValidator()

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace Core.Common.Validations
 {
+    [ExcludeFromCodeCoverage]
     public static class Validate
     {
         public enum CardTypes

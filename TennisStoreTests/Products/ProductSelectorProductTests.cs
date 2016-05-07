@@ -1,4 +1,5 @@
-﻿using Business.Contracts.Product;
+﻿using System.Diagnostics.CodeAnalysis;
+using Business.Contracts.Product;
 using Core.Common.Exceptions;
 using Core.Common.Model;
 using Domain.MasterData.ProductAggregate;
@@ -7,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TennisStoreTests.Products
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class ProductSelectorProductTests : ProductTestBase
     {
         [TestMethod]

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Core.Common.Model;
 using Domain.MasterData.Validations;
 using FluentValidation;
@@ -6,6 +7,7 @@ using FluentValidation;
 namespace Domain.MasterData.ProductAggregate
 {
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public sealed class ProductCategory : Entity<int>
     {
         private ProductCategory()

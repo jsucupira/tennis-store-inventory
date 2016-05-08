@@ -10,6 +10,7 @@ using Core.Common.Model;
 using Domain.MasterData.ProductAggregate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using TennisStoreTests.Products;
 
 namespace TennisStoreTests.Base
 {

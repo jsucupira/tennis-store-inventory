@@ -8,6 +8,7 @@ using Business.Contracts.Product;
 using Core.Common.Exceptions;
 using Core.Common.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TennisStoreTests.Products;
 
 namespace TennisStoreTests.Base
 {

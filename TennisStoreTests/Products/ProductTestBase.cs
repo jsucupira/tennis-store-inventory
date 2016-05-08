@@ -3,12 +3,12 @@ using System.Security.Principal;
 using System.Threading;
 using Core.Common.Extensions;
 using Core.Common.Model;
+using Core.Common.Security;
 using Data.Contracts.Product;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TennisStoreTests.Products;
 using TestHelpers;
 
-namespace TennisStoreTests
+namespace TennisStoreTests.Products
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -24,12 +24,13 @@ namespace TennisStoreTests
         [TestInitialize]
         public void Init()
         {
-            MefLoader.Initialize();
-            IProductRepository repository = MefBase.Resolve<IProductRepository>();
             GenericIdentity identity = new GenericIdentity("jsucupira");
-            string[] roles = {@"Administrators"};
+            string[] roles = { SecurityGroups.ADMINISTRATOR };
             GenericPrincipal principal = new GenericPrincipal(identity, roles);
             Thread.CurrentPrincipal = principal;
+
+            MefLoader.Initialize();
+            IProductRepository repository = MefBase.Resolve<IProductRepository>();
             ProductTestData.Products.ForEach(t => t.Activate());
             ProductTestData.Products.ForEach(t => repository.Create(t));
         }

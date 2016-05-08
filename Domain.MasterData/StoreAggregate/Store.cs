@@ -61,6 +61,11 @@ namespace Domain.MasterData.StoreAggregate
             StoreContacts = storeContact;
         }
 
+        public void SetName(string newName)
+        {
+            Name = newName;
+        }
+
         protected override IValidator GetValidator()
         {
             return new StoreValidator();

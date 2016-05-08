@@ -196,3 +196,7 @@ FakesAssemblies/
 *.opt
 
 #.sln.GhostDoc.xml
+
+
+#don't ignore these
+!lib/*

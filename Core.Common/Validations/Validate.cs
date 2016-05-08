@@ -68,7 +68,7 @@ namespace Core.Common.Validations
 
         public static bool IsValidUrl(this string value)
         {
-            if (String.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
                 return false;
 
             Regex re = new Regex(RegexPatterns.URL);

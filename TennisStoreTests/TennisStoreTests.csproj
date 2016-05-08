@@ -40,7 +40,14 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sampler">
+      <HintPath>..\lib\Sampler.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -61,9 +68,10 @@
     <Compile Include="Products\ProductTestData.cs" />
     <Compile Include="Products\ProductUpdatorProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stores\StoreBaseTest.cs" />
     <Compile Include="Stores\StoreSelectorTests.cs" />
     <Compile Include="Stores\StoreUpdatorTests.cs" />
-    <Compile Include="ProductTestBase.cs" />
+    <Compile Include="Products\ProductTestBase.cs" />
     <Compile Include="Vendors\VendorSelectorTests.cs" />
     <Compile Include="Vendors\VendorUpdatorTests.cs" />
   </ItemGroup>
